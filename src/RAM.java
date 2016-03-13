@@ -34,7 +34,7 @@ public class RAM {
         changing = true;
         remaining_size += temp_Process.get(pos).Opcode_Size();
         int jobnumber = temp_Process.get(pos).JobNumber;
-        temp_Process.RemoveAt(pos);
+        temp_Process.remove(pos);
         System.out.println("Remove Job Number "
                 + jobnumber + " out of RAM");
     }

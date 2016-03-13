@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.ArrayList;
+
 /**
  * Created by qazimusab on 2/19/16.
  */
@@ -48,5 +48,16 @@ public class Process {
     public int Opcode_Size(){
         int Size = job_opcode.size() + data_opcode.size();
         return Size;
+    }
+    public void Write(int pos, String newValue){
+        if (pos < data_opcode.size()){
+            data_opcode.set(pos, newValue);
+        }
+        else{
+            data_opcode.set(pos - data_opcode.size(), newValue);
+        }
+    }
+    public String Opcode_Value(int pc){
+        return (pc <= job_opcode.size() - 1 ? job_opcode.get(pc) : data_opcode.get(pc - job_opcode.size()));
     }
 }

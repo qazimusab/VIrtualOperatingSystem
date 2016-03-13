@@ -32,4 +32,7 @@ public class MMU {
         process = p;
         //page = new PageTable();
     }
+    public void ChangeState(STATE t){
+        state = t;
+    }
 }
