@@ -5,41 +5,41 @@ import java.util.List;
 public class RAM {
     public int total_size;
     public int remaining_size;
-    List<Process> temp_Process;
+    List<Process> tempProcess;
     List<String> pageOpCode;
     public boolean changing = false;
     public RAM(){
         total_size = 1024;
         remaining_size = 1024;
     }
-    private void RecalculateRemaining_Size(int prsize){
+    private void recalculateRemaining_Size(int prsize){
         remaining_size -= prsize;
     }
-    public void Add_Process(Process p){
+    public void addProcess(Process p){
         changing = true;
         //RecalculateRemaining_Size(p.Opcode_Size());
     }
-    public int Total_Process(){
-        return temp_Process.size();
+    public int totalProcess(){
+        return tempProcess.size();
     }
-    public Process GetProcess(int pos){
-        return temp_Process.get(pos);
+    public Process getProcess(int pos){
+        return tempProcess.get(pos);
     }
     public String Get_OpCode(int processloc, int opcodeloc){
         changing = true;
-        Process p = temp_Process.get(processloc);
-        return p.Opcode_Value(opcodeloc);
+        Process p = tempProcess.get(processloc);
+        return p.opcodeValue(opcodeloc);
     }
-    public void Remove_Process(int pos){
+    public void removeProcess(int pos){
         changing = true;
-        remaining_size += temp_Process.get(pos).Opcode_Size();
-        int jobnumber = temp_Process.get(pos).JobNumber;
-        temp_Process.remove(pos);
+        remaining_size += tempProcess.get(pos).Opcode_Size();
+        int jobnumber = tempProcess.get(pos).jobNumber;
+        tempProcess.remove(pos);
         System.out.println("Remove Job Number "
                 + jobnumber + " out of RAM");
     }
     public void WriteData(int pos, int pc, String Value){
-        temp_Process.get(pos).Write(pc, Value);
+        tempProcess.get(pos).write(pc, Value);
     }
     public int getPercent(){
         return ((total_size - remaining_size) / total_size) * 100;

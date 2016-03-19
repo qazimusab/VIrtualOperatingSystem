@@ -9,5 +9,16 @@ public class CPU {
     private PCB pcb;
     private List<Process> readyQueue;
 
+    public int pc = 0;
+    private String inputBuffer, outputBuffer, tempBuffer;
+    public Boolean working = false;
+    Thread t;
+    String opCodeString;
+    public int ioCount = 0;
 
+    public CPU(Dispatcher d, PCB p){
+        pcb = p;
+        //readyQueue.contains(pcb);
+
+    }
 }

@@ -21,10 +21,10 @@ public class MMU {
     public int pc;
     public MMU(Process p, int pos){
         posinRAM = pos;
-        Jobnum = p.JobNumber;
-        totalinstruction = p.NumberofInstructions;
+        Jobnum = p.jobNumber;
+        totalinstruction = p.numberofInstructions;
         totalopcode = p.Opcode_Size();
-        priority = p.Priority;
+        priority = p.priority;
         IBsize = p.inputBufferSize;
         OBsize = p.outputBufferSize;
         TBsize = p.tempBufferSize;

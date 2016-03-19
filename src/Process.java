@@ -7,49 +7,49 @@ public class Process {
     List<String> job_opcode;
     List<String> data_opcode;
     //public List<page> total_page;
-    public int JobNumber;
-    public int NumberofInstructions;
-    public int Priority;
+    public int jobNumber;
+    public int numberofInstructions;
+    public int priority;
     public int inputBufferSize;
     public int outputBufferSize;
     public int tempBufferSize;
-    public int DataAddress;
+    public int dataAddress;
 
     public Process(){
-        JobNumber = 0;
-        NumberofInstructions = 0;
-        Priority = 0;
+        jobNumber = 0;
+        numberofInstructions = 0;
+        priority = 0;
         inputBufferSize = 0;
         outputBufferSize = 0;
         tempBufferSize = 0;
-        DataAddress = 0;
+        dataAddress = 0;
     }
-    public void Set_Job_Info(int jobnum, int instrtotal, int pr){
-        JobNumber = jobnum;
-        NumberofInstructions = instrtotal;
-        Priority = pr;
+    public void setJobInfo(int jobnum, int instrtotal, int pr){
+        jobNumber = jobnum;
+        numberofInstructions = instrtotal;
+        priority = pr;
     }
-    public void Set_Data_Info(int input, int output, int temp){
+    public void setDataInfo(int input, int output, int temp){
         inputBufferSize = input;
         outputBufferSize = output;
         tempBufferSize = temp;
     }
-    public void Add_Job_opcode(String op){
+    public void addJobOpcode(String op){
         job_opcode.add(op);
         int pagenum = (job_opcode.size() - 1) / 4;
         /*if(total_page.size() == pagenum){
             total_page.add(new page(total_page.size()));
         }*/
     }
-    public void Add_Data_opcode(String op){
-        DataAddress = data_opcode.size();
+    public void addDataOpcode(String op){
+        dataAddress = data_opcode.size();
         data_opcode.add(op);
     }
     public int Opcode_Size(){
         int Size = job_opcode.size() + data_opcode.size();
         return Size;
     }
-    public void Write(int pos, String newValue){
+    public void write(int pos, String newValue){
         if (pos < data_opcode.size()){
             data_opcode.set(pos, newValue);
         }
@@ -57,7 +57,7 @@ public class Process {
             data_opcode.set(pos - data_opcode.size(), newValue);
         }
     }
-    public String Opcode_Value(int pc){
+    public String opcodeValue(int pc){
         return (pc <= job_opcode.size() - 1 ? job_opcode.get(pc) : data_opcode.get(pc - job_opcode.size()));
     }
 }

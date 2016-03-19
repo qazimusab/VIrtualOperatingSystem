@@ -10,7 +10,7 @@ class Driver {
     Dispatcher dispatch;
     PCB pcb;
     public List<CPU> totalCPU;
-    private boolean Complete = false;
+    private boolean complete = false;
 
     public Driver(String text){
         String input = "";
