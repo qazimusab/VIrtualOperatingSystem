@@ -39,14 +39,13 @@ public class ReadyQueue {
 
 
         if (PCBs.size() == 0) {
-            if(Driver.totalJobsFinishedExecuting == 30) {
+            if (Driver.totalJobsFinishedExecuting == 30) {
                 System.out.println("No PCBs remaining. Execution completed.");
                 Driver.totalCPUsThatHaveFinishedExecuting++;
-            }
-            else {
+            } else {
                 int remainingSize = Driver.ram.getRemainingSize();
                 int sizeFreedUp = 0;
-                for(int i = 0; i < Driver.totalJobsFinishedExecuting; i++) {
+                for (int i = 0; i < Driver.totalJobsFinishedExecuting; i++) {
                     sizeFreedUp += Driver.disk.getProcess(i).getTotalOperationCodeSize();
                 }
                 Driver.ram.setRemainingSize(remainingSize + sizeFreedUp);
@@ -60,12 +59,7 @@ public class ReadyQueue {
     public void calculateWaitTime(int programCounter) {
         if (programCounter == 1) {
             if (waitTime != 0) {
-                if(Driver.totalCores == 1) {
-                    System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " waited: " + (System.currentTimeMillis() - waitTime) + " milliseconds");
-                }
-                else {
-                    System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " waited: " + ((System.currentTimeMillis() - waitTime) / 2) + " milliseconds");
-                }
+                System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " waited: " + (Driver.totalCores == 1 ? (System.currentTimeMillis() - waitTime) : ((System.currentTimeMillis() - waitTime) / 2) + " milliseconds"));
             }
         } else {
             return;
