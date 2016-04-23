@@ -58,12 +58,18 @@ public class Driver {
 
     public void startProcessors() {
         if(totalCores == 1) {
+            System.out.println("--------------------------------------------------");
+            System.out.println("Starting Single Processor Operating System");
+            System.out.println("--------------------------------------------------");
             singleCPU.startCPU();
         }
         else {
+            System.out.println("--------------------------------------------------");
+            System.out.println("Starting Quad Core Processor Operating System");
+            System.out.println("--------------------------------------------------");
             quadCore.forEach(CPU::startCPU);
         }
-        while (!isExecutionComplete) {
+        while (totalCPUsThatHaveFinishedExecuting != totalCores) {
             isExecutionComplete = longTermScheduler.scheduleLongTerm();
             isExecutionComplete = shortTermScheduler.scheduleShortTerm() && isExecutionComplete;
         }

@@ -219,7 +219,7 @@ public class CPU {
                 System.out.println("Logical end of program");
                 readyQueue.removeFrontPCB();
                 programCounter = 0;
-                System.out.println("Total I/O count for this job is: " + totalIOCount);
+                System.out.println("Total # of I/O for this job was: " + totalIOCount);
                 totalIOCount = 0;
                 break;
             case 19:

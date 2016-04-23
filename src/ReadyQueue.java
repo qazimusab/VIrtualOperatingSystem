@@ -35,6 +35,7 @@ public class ReadyQueue {
         System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " took: " + (System.currentTimeMillis() - completionTime) + " milliseconds to complete");
 
         PCBs.remove(0);
+
         Driver.totalJobsFinishedExecuting++;
 
 
@@ -48,6 +49,8 @@ public class ReadyQueue {
                 for (int i = 0; i < Driver.totalJobsFinishedExecuting; i++) {
                     sizeFreedUp += Driver.disk.getProcess(i).getTotalOperationCodeSize();
                 }
+                while (Driver.ram.isChanging()) {}
+                while (Driver.pcb.isChanging()) {}
                 Driver.ram.setRemainingSize(remainingSize + sizeFreedUp);
                 Driver.longTermScheduler.scheduleLongTerm();
                 Driver.shortTermScheduler.scheduleShortTerm();
