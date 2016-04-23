@@ -1,27 +1,44 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by qazimusab on 2/19/16.
  */
 public class PCB {
-    List<MMU> Device_Queues;
-    RAM ram;
-    public Boolean changing = false;
-    /*public PCB(){
-        Device_Queues = new List<MMU>();
-    }*/
-    public PCB(RAM r){
-       ram = r;
-       //Device_Queues = new List<MMU>();
+
+    private List<MMU> processes;
+    private boolean changing = false;
+
+    public PCB() {
+        processes = new ArrayList<>();
     }
-    public void AddQueue(MMU c){
+
+    public void addQueue(MMU mmu) {
         changing = true;
-        //Device_Queues.add(c);
+        processes.add(mmu);
     }
-    public MMU GetQueueAt(int pos){
-        return Device_Queues.get(pos);
+
+    public MMU getQueue(int pos) {
+        return processes.get(pos);
     }
-    public int TotalQueues(){
-        return Device_Queues.size();
+
+    public int getTotalProcesses() {
+        return processes.size();
+    }
+
+    public boolean isChanging() {
+        return changing;
+    }
+
+    public void setChanging(boolean changing) {
+        this.changing = changing;
+    }
+
+    public List<MMU> getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(List<MMU> processes) {
+        this.processes = processes;
     }
 }

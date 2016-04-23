@@ -1,47 +1,104 @@
+import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by qazimusab on 2/19/16.
  */
 public class RAM {
-    public int total_size;
-    public int remaining_size;
-    List<Process> tempProcess;
-    List<String> pageOpCode;
-    public boolean changing = false;
-    public RAM(){
-        total_size = 1024;
-        remaining_size = 1024;
+
+    private int totalSize;
+    private int remainingSize;
+    private List<Process> processes;
+    private List<String> pageOperationCodes;
+    private boolean changing = false;
+
+    public RAM() {
+        totalSize = 1024;
+        remainingSize = 1024;
+        processes = new ArrayList<>();
+        pageOperationCodes = new ArrayList<>();
     }
-    private void recalculateRemaining_Size(int prsize){
-        remaining_size -= prsize;
+
+    private void subtractRemainingSize(int wordsUsedByProcess) {
+        remainingSize -= wordsUsedByProcess;
     }
-    public void addProcess(Process p){
+
+    public void addProcess(Process process) {
         changing = true;
-        //RecalculateRemaining_Size(p.Opcode_Size());
+        subtractRemainingSize(process.getTotalOperationCodeSize());
+        processes.add(process);
+        changing = false;
     }
-    public int totalProcess(){
-        return tempProcess.size();
+
+    public int totalProcesses() {
+        return processes.size();
     }
-    public Process getProcess(int pos){
-        return tempProcess.get(pos);
+
+    public Process getProcess(int pos) {
+        return processes.get(pos);
     }
-    public String Get_OpCode(int processloc, int opcodeloc){
+
+    public String getOperationCode(int processloc, int opcodeloc) {
         changing = true;
-        Process p = tempProcess.get(processloc);
-        return p.opcodeValue(opcodeloc);
+        Process p = processes.get(processloc);
+        return p.getOperationCodeValue(opcodeloc);
     }
-    public void removeProcess(int pos){
+
+    public void removeProcess(int pos) {
         changing = true;
-        remaining_size += tempProcess.get(pos).Opcode_Size();
-        int jobnumber = tempProcess.get(pos).jobNumber;
-        tempProcess.remove(pos);
-        System.out.println("Remove Job Number "
-                + jobnumber + " out of RAM");
+        remainingSize += processes.get(pos).getTotalOperationCodeSize();
+        int jobNumber = processes.get(pos).getJobNumber();
+        processes.remove(pos);
+        System.out.println("Remove Job Number " + jobNumber + " out of RAM");
     }
-    public void WriteData(int pos, int pc, String Value){
-        tempProcess.get(pos).write(pc, Value);
+
+    public void writeData(int pos, int pc, String Value) {
+        processes.get(pos).write(pc, Value);
     }
-    public int getPercent(){
-        return ((total_size - remaining_size) / total_size) * 100;
+
+    public boolean isChanging() {
+        return changing;
+    }
+
+    public void setChanging(boolean changing) {
+        this.changing = changing;
+    }
+
+    public int getRemainingSize() {
+        return remainingSize;
+    }
+
+    public int getTotalSize() {
+        return totalSize;
+    }
+
+    public List<Process> getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(List<Process> processes) {
+        this.processes = processes;
+    }
+
+    public List<String> getPageOperationCodes() {
+        return pageOperationCodes;
+    }
+
+    public void setPageOperationCodes(List<String> pageOperationCodes) {
+        this.pageOperationCodes = pageOperationCodes;
+    }
+
+    public void setRemainingSize(int remainingSize) {
+        changing = true;
+        this.remainingSize = remainingSize;
+        changing = false;
+    }
+
+    public void setTotalSize(int totalSize) {
+        this.totalSize = totalSize;
+    }
+
+    public int getPercentage() {
+        return ((totalSize - remainingSize) / totalSize) * 100;
     }
 }
