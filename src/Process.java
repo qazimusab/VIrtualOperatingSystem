@@ -59,22 +59,12 @@ public class Process {
                     jobInstruction));
             System.out.println("Just added this job instruction to page table: " + jobInstruction);
 
-            System.out.println("Page " + (pages.size() - 1) + ": now contains all these words:");
-            for (Data data : pages.get(pages.size() - 1).getWords()) {
-                if (data != null)
-                    System.out.println(data.getWord() + " at index " + data.getRemainder());
-            }
         } else {
             pages.get(pages.size() - 1).setWord(new Data((jobInstructions.size() - 1) / 4,
                     (jobInstructions.size() - 1) % 4,
                     jobInstruction));
             System.out.println("current opcode is " + jobInstruction);
 
-            System.out.println("Page number " + (pages.size() - 1) + " now contain:");
-            for (Data data : pages.get(pages.size() - 1).getWords()) {
-                if (data != null)
-                    System.out.println(data.getWord() + " at index " + data.getRemainder());
-            }
         }
     }
 
@@ -89,22 +79,11 @@ public class Process {
                     dataInstruction));
             System.out.println("Just added this data instruction to page table:  " + dataInstruction);
 
-            System.out.println("Page " + (pages.size() - 1) + ": now contains all these words:");
-            for (Data data : pages.get(pages.size() - 1).getWords()) {
-                if (data != null)
-                    System.out.println(data.getWord() + " at index " + data.getRemainder());
-            }
         } else { //page in list has space
             pages.get(pages.size() - 1).setWord(new Data((jobInstructions.size() - 1 + dataInstructions.size()) / 4,
                     (jobInstructions.size() - 1 + dataInstructions.size()) % 4,
                     dataInstruction));
             System.out.println("Just added this data instruction to page table:  " + dataInstruction);
-
-            System.out.println("Page " + (pages.size() - 1) + ": now contains  all these words:");
-            for (Data data : pages.get(pages.size() - 1).getWords()) {
-                if (data != null)
-                    System.out.println(data.getWord() + " at index " + data.getRemainder());
-            }
         }
     }
 

@@ -14,10 +14,12 @@ public class CPU {
     private Thread cpuThread;
     private String opcodeString;
     private int totalIOCount = 0;
+    private Cache cache;
 
     public CPU() {
         readyQueue = new ReadyQueue(this);
         register = new Register();
+        cache = new Cache();
     }
 
     /**

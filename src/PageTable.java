@@ -2,7 +2,8 @@
  * Created by qazimusab on 3/17/16.
  */
 public class PageTable {
-    private Page[] table;
+
+    private Page[] table; //use array because its more efficient
 
     public PageTable() {
         table = new Page[4];
