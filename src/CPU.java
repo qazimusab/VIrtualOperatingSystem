@@ -5,11 +5,18 @@ public class CPU {
 
     private ReadyQueue readyQueue;
     private Register register;
-    private int opCode, instructionType, s1Register, s2Register, dRegister, bRegister, register1, register2;
+    private int opCode;
+    private int instructionType;
+    private int s1Register;
+    private int s2Register;
+    private int dRegister;
+    private int bRegister;
+    private int register1;
+    private int register2;
     private long dataSection;
     private long address;
     private int programCounter = 0;
-    private String InputBuffer, OutputBuffer;
+    private String inputBuffer, outputBuffer;
     private boolean working = false;
     private Thread cpuThread;
     private String opcodeString;
@@ -69,8 +76,8 @@ public class CPU {
                 System.out.println("Reads Content of Input buffer into a accumulator.");
                 if (address > 0) {
                     pcbPosition = readyQueue.getPCBAtFront();
-                    InputBuffer = Driver.dma.GetOpcode(pcbPosition, getWordAddress((int) address));
-                    register.assign(Converter.binaryToDecimal(InputBuffer), register1);
+                    inputBuffer = Driver.dma.GetOpcode(pcbPosition, getWordAddress((int) address));
+                    register.assign(Converter.binaryToDecimal(inputBuffer), register1);
                     totalIOCount++;
                 } else {
                     register.assign(register.get(register2), register1);
@@ -80,9 +87,9 @@ public class CPU {
             case 1:
                 System.out.println("............Operation Code: " + operationCode + " = WR............");
                 System.out.println("Writes the content of accumulator into Output buffer.");
-                OutputBuffer = Converter.decimalToBinary(register.get(register1));
+                outputBuffer = Converter.decimalToBinary(register.get(register1));
                 pcbPosition = readyQueue.getPCBAtFront();
-                Driver.dma.writeData(pcbPosition, getWordAddress((int) address), OutputBuffer);
+                Driver.dma.writeData(pcbPosition, getWordAddress((int) address), outputBuffer);
                 totalIOCount++;
                 break;
             case 2:
