@@ -5,9 +5,9 @@ public class ShortTermScheduler {
 
     public boolean scheduleShortTerm() {
         ReadyQueue readyQueue;
-        if(Driver.totalCores == 4) {
+        if(Driver.totalCores > 1) {
             int cpuWithShortestReadyQueue = 0;
-            for (int i = 1; i < Driver.quadCore.size(); ++i) {
+            for (int i = 1; i < Driver.totalCores; ++i) {
                 if (Driver.quadCore.get(cpuWithShortestReadyQueue).getReadyQueue().getTotalPCBs() > Driver.quadCore.get(i).getReadyQueue().getTotalPCBs())
                     cpuWithShortestReadyQueue = i;
             }

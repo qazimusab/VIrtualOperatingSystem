@@ -24,7 +24,7 @@ public class Driver {
     public void startOperatingSystemSimulation() {
         Scanner scanner = new Scanner(System.in);
         quadCore = new ArrayList<>();
-        System.out.println("Enter '1' for only 1 CPU or '4' for 4 CPUs");
+        System.out.println("Enter '1' for only 1 CPU or 'n' for n CPUs");
         String input = scanner.nextLine();
 
         shortTermScheduler = new ShortTermScheduler();
@@ -34,19 +34,21 @@ public class Driver {
         pcb = new PCB();
         dispatcher = new Dispatcher();
         dma = new DMA();
-        Loader.load(); //loads the jobs and their data sections into disk
 
         if (input.equals("1")) {
             totalCores = 1;
             singleCPU = new CPU();
+            Loader.load(); //loads the jobs and their data sections into disk
             startProcessors();
         }
-        else if (input.equals("4")) {
-            totalCores = 4;
-            for (int i = 0; i < 4; i++) {
+
+        else if (input.equals("n")) {
+            System.out.println("Enter how many CPU's you want.");
+            totalCores = scanner.nextInt();
+            for (int i = 0; i < totalCores; i++) {
                 quadCore.add(new CPU());
             }
-
+            Loader.load(); //loads the jobs and their data sections into disk
             startProcessors();
         }
         else {

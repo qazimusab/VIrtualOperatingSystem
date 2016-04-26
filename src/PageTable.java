@@ -57,9 +57,9 @@ public class PageTable {
 
     public void swapPage(Page pageToSwap) {
         System.out.println("............Swapping Opcode............");
-        for (int pos = 0; pos < 4; pos++) {
-            if (table[pos] == null) {
-                table[pos] = pageToSwap;
+        for (int i = 0; i < 4; i++) {
+            if (table[i] == null) {
+                table[i] = pageToSwap;
                 return;
             }
         }
