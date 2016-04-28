@@ -57,13 +57,14 @@ public class Process {
             pages.get(pages.size() - 1).setWord(new Data((jobInstructions.size() - 1) / 4,
                     (jobInstructions.size() - 1) % 4,
                     jobInstruction));
+            System.out.println("Creating new page in page table");
             System.out.println("Just added this job instruction to page table: " + jobInstruction);
 
         } else {
             pages.get(pages.size() - 1).setWord(new Data((jobInstructions.size() - 1) / 4,
                     (jobInstructions.size() - 1) % 4,
                     jobInstruction));
-            System.out.println("current opcode is " + jobInstruction);
+            System.out.println("Just added this job instruction to page table: " + jobInstruction);
 
         }
     }
@@ -77,6 +78,7 @@ public class Process {
             pages.get(pages.size() - 1).setWord(new Data((jobInstructions.size() - 1 + dataInstructions.size()) / 4,
                     (jobInstructions.size() - 1 + dataInstructions.size()) % 4,
                     dataInstruction));
+            System.out.println("Creating new page in page table");
             System.out.println("Just added this data instruction to page table:  " + dataInstruction);
 
         } else { //page in list has space

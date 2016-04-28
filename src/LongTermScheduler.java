@@ -1,14 +1,16 @@
 /**
  * Created by qazimusab on 4/20/16.
  */
-public class LongTermScheduler {
+public class LongTermScheduler implements ILongTermScheduler {
 
     public static int programCounter = 0;
 
+    @Override
     public boolean canScheduleLongTerm() {
         return programCounter < Driver.disk.getTotalProcesses() && Driver.ram.getRemainingSize() >= Driver.disk.getProcess(programCounter).getTotalOperationCodeSize();
     }
 
+    @Override
     public boolean scheduleLongTerm() {
         if (canScheduleLongTerm()) {
             System.out.println("-------------------------------------------");

@@ -1,8 +1,9 @@
 /**
  * Created by qazimusab on 4/20/16.
  */
-public class ShortTermScheduler {
+public class ShortTermScheduler implements IShortTermScheduler {
 
+    @Override
     public boolean scheduleShortTerm() {
         ReadyQueue readyQueue;
         if(Driver.totalCores > 1) {

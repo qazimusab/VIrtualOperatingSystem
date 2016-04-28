@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by qazimusab on 2/19/16.
  */
-public class Driver {
+public class Driver implements IDriver {
 
     public static Disk disk;
     public static RAM ram;
@@ -34,11 +34,12 @@ public class Driver {
         pcb = new PCB();
         dispatcher = new Dispatcher();
         dma = new DMA();
+        Loader loader = new Loader();
 
         if (input.equals("1")) {
             totalCores = 1;
             singleCPU = new CPU();
-            Loader.load(); //loads the jobs and their data sections into disk
+            loader.load(); //loads the jobs and their data sections into disk
             startProcessors();
         }
 
@@ -48,7 +49,7 @@ public class Driver {
             for (int i = 0; i < totalCores; i++) {
                 quadCore.add(new CPU());
             }
-            Loader.load(); //loads the jobs and their data sections into disk
+            loader.load(); //loads the jobs and their data sections into disk
             startProcessors();
         }
         else {

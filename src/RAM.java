@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by qazimusab on 2/19/16.
  */
-public class RAM {
+public class RAM implements IRAM {
 
     private int totalSize;
     private int remainingSize;

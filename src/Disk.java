@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by Patrick on 2/26/2016.
  */
-public class Disk {
+public class Disk implements IDisk {
 
     private int totalSize;
     private int remainingSize;

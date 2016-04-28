@@ -1,7 +1,7 @@
 /**
  * Created by qazimusab on 2/16/16.
  */
-public class CPU {
+public class CPU implements ICPU {
 
     private ReadyQueue readyQueue;
     private Register register;
@@ -66,7 +66,8 @@ public class CPU {
      *
      * @param operationCode
      */
-    private void execute(int operationCode) {
+    @Override
+    public void execute(int operationCode) {
         int pcbPosition;
         readyQueue.calculateWaitTime(programCounter);
         System.out.println("............Execution Starting............");
@@ -311,7 +312,8 @@ public class CPU {
         return address / 4;
     }
 
-    private int decode(String binaryInstruction) {
+    @Override
+    public int decode(String binaryInstruction) {
         System.out.println("................Decoding Started................");
         System.out.println("Decoding: " + binaryInstruction);
         instructionType = Converter.binaryToDecimal(binaryInstruction.substring(0, 2));
@@ -369,7 +371,8 @@ public class CPU {
     /**
      * Fetches the next instruction from the ready queue
      */
-    private void fetch() {
+    @Override
+    public void fetch() {
         working = false;
         if (readyQueue.getTotalPCBs() > 0) { //check if any processes are in queue
             int pcbAtFront = readyQueue.getPCBAtFront();

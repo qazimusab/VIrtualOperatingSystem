@@ -5,9 +5,10 @@ import java.io.FileReader;
 /**
  * Created by qazimusab on 3/17/16.
  */
-public class Loader {
+public class Loader implements ILoader {
 
-    public static void load() {
+    @Override
+    public void load() {
         String relativePathToFile = "src/Program-File.txt";
         String line;
         boolean isDataOpcode = false;
