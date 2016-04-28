@@ -38,7 +38,7 @@ public class ReadyQueue {
     public void removeFrontPCB() {
         System.out.println("Removing Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber());
 
-        System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " took: " + ((Driver.totalCores == 1) ? (System.currentTimeMillis() - completionTime) + " milliseconds to complete" : (System.currentTimeMillis() - completionTime) / 2 + " milliseconds to complete"));
+        System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " took: " + (System.currentTimeMillis() - completionTime) + " milliseconds to complete");
         System.out.println("% of RAM used: " + ((double)Driver.pcb.getQueue(PCBs.get(0)).process.getTotalOperationCodeSize() / (double)Driver.ram.getTotalSize()) * 100);
         PCBs.remove(0);
 
@@ -70,7 +70,7 @@ public class ReadyQueue {
     public void calculateWaitTime(int programCounter) {
         if (programCounter == 1) {
             if (waitTime != 0) {
-                System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " waited: " + (Driver.totalCores == 1 ? (System.currentTimeMillis() - waitTime) : ((System.currentTimeMillis() - waitTime) / 2) + " milliseconds"));
+                System.out.println("Job #" + Driver.pcb.getQueue(PCBs.get(0)).process.getJobNumber() + " waited: " + (System.currentTimeMillis() - waitTime) + " milliseconds");
             }
         } else {
             return;
