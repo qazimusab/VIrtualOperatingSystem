@@ -1,3 +1,8 @@
+package operating_system.cpu_related;
+
+import operating_system.paging.Data;
+import operating_system.paging.Page;
+
 import java.util.ArrayList;
 import java.util.List;
 

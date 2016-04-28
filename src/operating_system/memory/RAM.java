@@ -1,3 +1,8 @@
+package operating_system.memory;
+
+import operating_system.interfaces.IRAM;
+import operating_system.cpu_related.Process;
+
 import java.util.ArrayList;
 import java.util.List;
 

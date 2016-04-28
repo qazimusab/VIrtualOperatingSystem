@@ -1,3 +1,5 @@
+package operating_system.paging;
+
 /**
  * Created by qazimusab on 3/17/16.
  */

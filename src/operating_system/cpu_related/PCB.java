@@ -1,3 +1,7 @@
+package operating_system.cpu_related;
+
+import operating_system.memory.MMU;
+
 import java.util.ArrayList;
 import java.util.List;
 

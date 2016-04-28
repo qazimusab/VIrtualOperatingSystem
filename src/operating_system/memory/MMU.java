@@ -1,9 +1,16 @@
+package operating_system.memory;
+
+import operating_system.main.Driver;
+import operating_system.cpu_related.Process;
+import operating_system.paging.Page;
+import operating_system.paging.PageTable;
+
 /**
  * Created by Patrick on 3/12/2016.
  */
 public class MMU {
 
-    Process process;
+    public Process process;
     public int positionInRam;
     public Process.STATE state;
     private PageTable pageTable;

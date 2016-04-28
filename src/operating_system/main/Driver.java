@@ -1,3 +1,15 @@
+package operating_system.main;
+
+import operating_system.cpu_related.DMA;
+import operating_system.scheduler.Dispatcher;
+import operating_system.interfaces.IDriver;
+import operating_system.cpu_related.PCB;
+import operating_system.cpu_related.CPU;
+import operating_system.memory.Disk;
+import operating_system.memory.RAM;
+import operating_system.scheduler.LongTermScheduler;
+import operating_system.scheduler.ShortTermScheduler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

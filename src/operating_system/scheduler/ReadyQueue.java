@@ -1,3 +1,9 @@
+package operating_system.scheduler;
+
+import operating_system.cpu_related.CPU;
+import operating_system.cpu_related.Process;
+import operating_system.main.Driver;
+
 import java.util.ArrayList;
 import java.util.List;
 

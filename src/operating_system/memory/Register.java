@@ -1,7 +1,11 @@
+package operating_system.memory;
+
+import operating_system.interfaces.IRegister;
+
 /**
  * Created by qazimusab on 3/17/16.
  */
-public class Register {
+public class Register implements IRegister {
     private int[] registers;
 
     public Register() {
@@ -11,17 +15,17 @@ public class Register {
         }
     }
 
-    public void assign(int valueToAssign, int index) {
+    public void insert(int value, int index) {
         if (index == 1) {
             return;
         } else if (index < registers.length) {
-            registers[index] = valueToAssign;
+            registers[index] = value;
         } else {
             System.out.println("The register is invalid.");
         }
     }
 
-    public int get(int index) {
-        return registers[index];
+    public int retrieve(int registerIndex) {
+        return registers[registerIndex];
     }
 }

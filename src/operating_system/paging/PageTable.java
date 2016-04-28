@@ -1,3 +1,7 @@
+package operating_system.paging;
+
+import operating_system.main.Converter;
+
 /**
  * Created by qazimusab on 3/17/16.
  */

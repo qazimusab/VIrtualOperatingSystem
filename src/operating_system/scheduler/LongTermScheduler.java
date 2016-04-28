@@ -1,3 +1,9 @@
+package operating_system.scheduler;
+
+import operating_system.main.Driver;
+import operating_system.interfaces.ILongTermScheduler;
+import operating_system.memory.MMU;
+
 /**
  * Created by qazimusab on 4/20/16.
  */

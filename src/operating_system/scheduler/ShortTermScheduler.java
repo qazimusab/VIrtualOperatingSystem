@@ -1,3 +1,11 @@
+package operating_system.scheduler;
+
+import operating_system.main.Driver;
+import operating_system.interfaces.IShortTermScheduler;
+import operating_system.cpu_related.Process;
+
+import java.lang.*;
+
 /**
  * Created by qazimusab on 4/20/16.
  */

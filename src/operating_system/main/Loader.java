@@ -1,3 +1,8 @@
+package operating_system.main;
+
+import operating_system.interfaces.ILoader;
+import operating_system.cpu_related.Process;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,7 +14,7 @@ public class Loader implements ILoader {
 
     @Override
     public void load() {
-        String relativePathToFile = "src/Program-File.txt";
+        String relativePathToFile = "src/operating_system/Program-File.txt";
         String line;
         boolean isDataOpcode = false;
         Process process = new Process();

@@ -1,7 +1,10 @@
+package operating_system.memory;
+
+import operating_system.cpu_related.Process;
 /**
  * Created by qazimusab on 3/17/16.
  */
-class Cache
+public class Cache
 {
     int[] registerCopy;
     Process process;
@@ -17,7 +20,7 @@ class Cache
     {
         for (int i = 0; i < registerCopy.length; i++)
         {
-            registerCopy[i] = reg.get(i);
+            registerCopy[i] = reg.retrieve(i);
         }
     }
     public Register resume()
@@ -25,7 +28,7 @@ class Cache
         Register reg = new Register();
         for (int i = 0; i < 16; i++)
         {
-            reg.assign(registerCopy[i], i);
+            reg.insert(registerCopy[i], i);
         }
 
         return reg;
