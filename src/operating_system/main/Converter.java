@@ -21,7 +21,7 @@ public class Converter {
 
     public static String hexToBinary(String hex) {
         String preBin = new BigInteger(hex, 16).toString(2);
-        Integer length = preBin.length();
+        int length = preBin.length();
         if (length < 32) {
             for (int i = 0; i < 32 - length; i++) {
                 preBin = "0" + preBin;
